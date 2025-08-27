@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Admission – জ্ঞান অন্বেষণ প্রি-ক্যাডেট স্কুল এন্ড হাইস্কুল</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <style>
+    /* --- Custom Properties for Theming (reused from main website) --- */
+    :root {
+        --brand-primary: #0b6efd;
+        --brand-accent: #0aa27a;
+        --brand-dark: #0f172a;
+        --brand-muted: #64748b;
+        --brand-light: #f8fafc;
+        --brand-card: #ffffff;
+        --brand-notice: #133a94;
+        --brand-notice-accent: #ffcc00;
+        --shadow-soft: 0 10px 20px rgba(2, 8, 23, .08);
+        --radius-large: 20px;
+        --radius-medium: 16px;
+        --header-bg: #800080;
+        --button-bg: #ff69b4;
+        --floating-button-bg: #a52a2a;
+    }
+
+    /* --- Base & Typography (reused from main website) --- */
+    html, body {
+        font-family: "Noto Sans Bengali", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+        background-color: var(--brand-light);
+        color: var(--brand-dark);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    main {
+        flex: 1;
+    }
+
+    /* --- Header Styling (reused from main website) --- */
+    .brandbar {
+        background: var(--brand-notice); /* Notice board color */
+        color: #fff;
+    }
+    
+    .brandbar .school-logo {
+        max-height: 80px; /* লোগোর সর্বোচ্চ উচ্চতা */
+        width: auto;
+        border-radius: 8px; /* লোগোর চারপাশে হালকা গোল বর্ডার */
+    }
+    
+    .school-name {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .school-name-lg {
+        font-size: 2.8rem;
+    }
+    
+    .school-address {
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 0.3rem;
+        color: #f0f0f0;
+    }
+
+    @media (max-width: 991.98px) {
+        .brandbar .school-logo {
+            max-height: 60px;
+        }
+        .school-name {
+            font-size: 1.8rem;
+            margin-top: 1rem;
+            margin-bottom: 0.2rem;
+        }
+        .school-address {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+    }
+    
+    /* --- Main Navigation Bar (reused from main website) --- */
+    .main-navbar {
+        background: #111827; /* Footer-like black background */
+        font-size: 15px;
+        z-index: 1020;
+    }
+    
+    .main-navbar .nav-link {
+        font-weight: 600;
+        padding: .6rem 1.2rem;
+        color: #fff !important;
+        transition: all 0.3s ease;
+    }
+    
+    .main-navbar .nav-link:hover,
+    .main-navbar .nav-link.active {
+        background-color: var(--button-bg); /* Pink background for hover/active */
+        border-radius: 5px;
+        color: #fff !important;
+    }
+
+    .main-navbar .dropdown-menu {
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+        background-color: #111827;
+    }
+    .main-navbar .dropdown-item {
+        font-weight: 500;
+        padding: .5rem 1rem;
+        color: #fff;
+    }
+    .main-navbar .dropdown-item:hover {
+        background: #374151;
+        color: #fff;
+    }
+    
+    /* --- Submenu Functionality (FIX) (reused from main website) --- */
+    .dropdown-menu .dropdown-submenu {
+      position: relative;
+    }
+    .dropdown-menu .dropdown-submenu > .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: -1px;
+      display: none;
+    }
+    .dropdown-menu .dropdown-submenu.show > .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu .dropdown-toggle::after {
+      display: inline-block;
+      margin-left: .255em;
+      vertical-align: .255em;
+      content: "";
+      border-top: .3em solid transparent;
+      border-right: 0;
+      border-bottom: .3em solid transparent;
+      border-left: .3em solid;
+    }
+    @media (max-width: 991.98px) {
+        .dropdown-menu .dropdown-submenu > .dropdown-menu {
+            left: 0;
+            position: static;
+            float: none;
+            width: auto;
+            box-shadow: none;
+            border: none;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .dropdown-menu .dropdown-toggle::after {
+            border-top: .3em solid;
+            border-right: .3em solid transparent;
+            border-bottom: 0;
+            border-left: .3em solid transparent;
+        }
+    }
+    
+    /* --- Footer (reused from main website) --- */
+    footer {
+      background: #111827;
+      color: #cbd5e1;
+    }
+    footer h6 {
+      color: #fff;
+      letter-spacing: .5px;
+    }
+    .footer-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-link:hover {
+      color: #fff;
+    }
+    .social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #1f2937;
+      display: inline-grid;
+      place-items: center;
+      color: #e5e7eb;
+      transition: background-color 0.3s;
+    }
+    .social a:hover {
+      background: #374151;
+    }
+    .divider {
+      height: 1px;
+      background: #374151;
+      margin: 1.5rem 0;
+    }
+
+    /* --- Back to Top Button (reused from main website) --- */
+    .back-to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1050;
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--floating-button-bg);
+      border-color: var(--floating-button-bg);
+    }
+    .back-to-top:hover {
+      background-color: #7b2424;
+      border-color: #7b2424;
+    }
+
+    /* --- Admission Page Specific Styles (from original admission.html) --- */
+    .form-container {
+        background-color: var(--brand-card);
+        border-radius: var(--radius-large);
+        box-shadow: var(--shadow-soft);
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+    }
+    .form-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .loading-spinner {
+        display: none;
+    }
+    .alert-message {
+        margin-top: 1rem;
+        display: none;
+    }
+    @media (max-width: 767px) {
+        .form-container {
+            padding: 1.5rem;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header from the main website -->
+  <header class="brandbar border-bottom sticky-top" style="z-index: 1030;">
+    <div class="container-fluid py-3">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-lg-2 col-md-3 col-sm-4 text-center mb-3 mb-lg-0">
+          <img src="https://i.ibb.co.com/pvKYPySd/logo.jpg" alt="জ্ঞান অন্বেষণ প্রি-ক্যাডেট স্কুল এন্ড হাইস্কুল লোগো" class="img-fluid school-logo">
+        </div>
+        <div class="col-lg-7 col-md-6 col-sm-8 text-center mb-3 mb-lg-0">
+          <h2 class="school-name school-name-lg">জ্ঞান অন্বেষণ প্রি-ক্যাডেট স্কুল এন্ড হাই-স্কুল</h2>
+          <p class="school-address">
+            <i class="bi bi-geo-alt-fill"></i> গ্রামীণ টাওয়ার সংলগ্ন, বানেশ্বার বাজার, গোবিন্দগঞ্জ,গাইবান্ধা </p>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 text-center">
+          <div class="btn-group" role="group" aria-label="Contact and Follow Us">
+            <div class="btn-group" role="group">
+              <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-fill"></i> Follow Us
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="https://www.facebook.com/Ganonneshon" target="_blank"><i class="bi bi-facebook me-2"></i> Facebook</a></li>
+                <li><a class="dropdown-item" href="https://www.youtube.com/@Ganonneshon" target="_blank"><i class="bi bi-youtube me-2"></i> YouTube</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation bar from the main website, with active link set to "ভর্তি" -->
+  <nav class="navbar navbar-expand-lg navbar-dark main-navbar sticky-top" style="z-index: 1020;">
+    <div class="container-fluid">
+      <button class="navbar-toggler my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav d-flex justify-content-center flex-wrap mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">হোম</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="administarationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">প্রশাসন</a>
+            <ul class="dropdown-menu" aria-labelledby="administarationDropdown">
+              <li><a class="dropdown-item" href="#">প্রধান শিক্ষক</a></li>
+              <li><a class="dropdown-item" href="#">ম্যানেজিং কমিটির সদস্য</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="#">ইনস্টিটিউট বিবরণ</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="listDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">সকল তালিকা</a>
+            <ul class="dropdown-menu" aria-labelledby="listDropdown">
+              <li><a class="dropdown-item" href="#">শিক্ষার্থী তালিকা</a></li>
+              <li><a class="dropdown-item" href="#">শিক্ষক তালিকা</a></li>
+              <li><a class="dropdown-item" href="#">কর্মচারী তথ্য</a></li>
+            </ul>
+          </li>
+           
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="routineDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">রুটিন সমূহ</a>
+            <ul class="dropdown-menu" aria-labelledby="routineDropdown">
+              <li><a class="dropdown-item" href="#">ক্লাস রুটিন</a></li>
+              <li><a class="dropdown-item" href="#">পরীক্ষার রুটিন</a></li>
+              <li><a class="dropdown-item" href="https://ibb.co.com/nMfQcDqP" target="_blank">সরকারি ছুটির তালিকা</a></li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="instituteInfoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">ইনস্টিটিউট তথ্য</a>
+            <ul class="dropdown-menu" aria-labelledby="instituteInfoDropdown">
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" href="#">একাডেমিক তথ্য</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">বিস্তারিত তথ্য</a></li>
+                  <li><a class="dropdown-item" href="#">পোশাক কোড</a></li>
+                  <li><a class="dropdown-item" href="#">সিট তথ্য</a></li>
+                  <li><a class="dropdown-item" href="#">সিলেবাস তথ্য</a></li>
+                </ul>
+              </li>
+               <li><a class="dropdown-item" href="#">ফি তথ্য</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="galleryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">গ্যালারী</a>
+            <ul class="dropdown-menu" aria-labelledby="galleryDropdown">
+              <li><a class="dropdown-item" href="#">ছবি গ্যালারী</a></li>
+              <li><a class="dropdown-item" href="#">ভিডিও গ্যালারী</a></li>
+            </ul>
+          </li>
+            
+          <li><a class="dropdown-item" href="https://nctbbook.com/" target="_blank">সরকারি পাঠ্যবইসমুহ </a></li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">আরো</a>
+            <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+              <li><a class="dropdown-item" href="#">সকল নোটিশ</a></li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" href="#">ডাউনলোড</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">অ্যাসাইনমেন্ট</a></li>
+                  <li><a class="dropdown-item" href="#">রেকর্ডেড ক্লাস</a></li>
+                  <li><a class="dropdown-item" href="#">ডিজিটাল কনটেন্ট</a></li>
+                  <li><a class="dropdown-item" href="#">হ্যান্ড বুক</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav-item"><a class="nav-link active" href="#" aria-current="page">ভর্তি</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">যোগাযোগ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">শিক্ষক লগইন</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">শিক্ষার্থী লগইন</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">পরিচালক লগইন</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content: Admission Form (copied from your original file) -->
+  <main class="py-5">
+    <div class="container">
+      <section id="admissionFormSection" class="form-container">
+        <div class="form-header">
+            <i class="bi bi-pencil-square fs-1 text-primary"></i>
+            <h2 class="mt-3 mb-2">ভর্তি ফরম</h2>
+            <p class="text-muted">দয়া করে সমস্ত তথ্য সঠিকভাবে পূরণ করুন।</p>
+        </div>
+
+        <form id="admissionForm">
+          <div class="row g-3">
+            <!-- Student Information -->
+            <div class="col-md-6">
+              <label for="studentName" class="form-label">শিক্ষার্থীর পূর্ণ নাম</label>
+              <input type="text" class="form-control" id="studentName" required>
+            </div>
+            <div class="col-md-6">
+              <label for="birthDate" class="form-label">জন্ম তারিখ</label>
+              <input type="date" class="form-control" id="birthDate" required>
+            </div>
+            <div class="col-md-6">
+              <label for="className" class="form-label">শ্রেণি</label>
+              <select class="form-select" id="className" required>
+                <option selected disabled value="">বাছাই করুন...</option>
+                <option>প্রথম</option>
+                <option>দ্বিতীয়</option>
+                <option>তৃতীয়</option>
+                <option>চতুর্থ</option>
+                <option>পঞ্চম</option>
+                <option>ষষ্ঠ</option>
+                <option>সপ্তম</option>
+                <option>অষ্টম</option>
+                <option>নবম</option>
+                <option>দশম</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="fatherName" class="form-label">পিতার নাম</label>
+              <input type="text" class="form-control" id="fatherName" required>
+            </div>
+            <div class="col-md-6">
+              <label for="motherName" class="form-label">মাতার নাম</label>
+              <input type="text" class="form-control" id="motherName" required>
+            </div>
+            <div class="col-md-6">
+              <label for="address" class="form-label">ঠিকানা</label>
+              <input type="text" class="form-control" id="address" required>
+            </div>
+            <div class="col-md-6">
+              <label for="guardianContact" class="form-label">অভিভাবকের মোবাইল নম্বর</label>
+              <input type="tel" class="form-control" id="guardianContact" required>
+            </div>
+            <div class="col-md-6">
+              <label for="birthCertificateNumber" class="form-label">জন্ম সনদ নম্বর</label>
+              <input type="text" class="form-control" id="birthCertificateNumber" required>
+            </div>
+            <div class="col-md-6">
+                <label for="studentPhoto" class="form-label">শিক্ষার্থীর ছবি</label>
+                <input type="file" class="form-control" id="studentPhoto" accept="image/png, image/jpeg, image/jpg" required>
+            </div>
+            <div class="col-md-6">
+                <label for="birthCertificateFile" class="form-label">জন্ম সনদ এর ছবি</label>
+                <input type="file" class="form-control" id="birthCertificateFile" accept="image/png, image/jpeg, image/jpg" required>
+            </div>
+          </div>
+
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <span id="submitSpinner" class="spinner-border spinner-border-sm loading-spinner me-2" role="status" aria-hidden="true"></span>
+              ভর্তি ফরম জমা দিন
+            </button>
+          </div>
+          <div id="formMessage" class="alert alert-message" role="alert"></div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer from the main website -->
+  <footer class="pt-5 pb-4 mt-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h6 class="mb-3">আমাদের সম্পর্কে</h6>
+          <p class="text-secondary small">২০১৬ সালে প্রতিষ্ঠিত, জ্ঞান অন্বেষণ প্রি-ক্যাডেট স্কুল এন্ড হাইস্কুল গাইবান্ধা জেলার গোবিন্দগঞ্জ উপজেলার একটি স্বনামধন্য শিক্ষা প্রতিষ্ঠান। এখানে প্লে-গ্রুপ থেকে নবম শ্রেণি পর্যন্ত শিক্ষার্থীদের আধুনিক ও মানসম্মত শিক্ষা প্রদান করা হয়।</p>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+          <h6 class="mb-3">দরকারী লিঙ্ক</h6>
+          <ul class="list-unstyled">
+            <li><a class="footer-link small d-block mb-2" href="#">ফলাফল</a></li>
+            <li><a class="footer-link small d-block mb-2" href="#">ডাউনলোড</a></li>
+            <li><a class="footer-link small d-block mb-2" href="#">নোটিশ</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <h6 class="mb-3">সাম্প্রতিক খবর</h6>
+          <ul class="list-unstyled" id="recentNews"><li class="text-secondary small">লোড হচ্ছে...</li></ul>
+        </div>
+        <div class="col-lg-3" id="contact">
+          <h6 class="mb-3">যোগাযোগ</h6>
+          <ul class="list-unstyled text-secondary small mb-3">
+            <li class="d-flex gap-2 mb-2"><i class="bi bi-geo-alt-fill text-primary mt-1"></i><span>গ্রামীণ টাওয়ার সংলগ্ন, বানেশ্বার বাজার, গোবিন্দগঞ্জ</span></li>
+            <li class="d-flex gap-2 mb-2"><i class="bi bi-telephone-fill text-primary mt-1"></i><span>01303-703561, 01751-246763</span></li>
+            <li class="d-flex gap-2 mb-2"><i class="bi bi-envelope-fill text-primary mt-1"></i><span>info.genonneshon@gmail.com</span></li>
+          </ul>
+          <div class="d-flex align-items-center gap-2 social mb-3">
+            <a href="https://www.facebook.com/profile.php?id=61578225627566" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://youtube.com/channel/UCSbXN13j7xstENZnTb4g5ZA?si=zJJJ-K9BM9FsdhGl" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="d-flex flex-wrap justify-content-between align-items-center small text-secondary">
+        <div>© <span id="year"></span>, All Rights Reserved.</div>
+        <div class="d-flex align-items-center">
+            Developed and Maintained by <a href="#" class="footer-link ms-1">ARMS info Tech BD</a>
+            <div class="social-links d-flex gap-2 ms-3">
+              <a href="#" target="_blank" class="footer-link" aria-label="Website"><i class="bi bi-link" style="font-size: 1.25rem;"></i></a>
+              <a href="https://www.facebook.com/mehedi.birat/" target="_blank" class="footer-link" aria-label="Facebook"><i class="bi bi-facebook" style="font-size: 1.25rem;"></i></a>
+              <a href="https://wa.me/8801727393466" target="_blank" class="footer-link" aria-label="WhatsApp"><i class="bi bi-whatsapp" style="font-size: 1.25rem;"></i></a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="btnTop" class="btn btn-primary back-to-top"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN6jIeHz9T" crossorigin="anonymous"></script>
+  
+  <script type="module">
+    // --- Firebase SDK Imports ---
+    // We import the necessary services for both Firestore and Realtime Database/Storage
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+    import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+    
+    // --- Firebase Configuration ---
+    const firebaseConfig = {
+      apiKey: "AIzaSyC2uITWHyT5LGxDr38pgJSlTzO3oNBnlg4",
+      authDomain: "gan-onneshon.firebaseapp.com",
+      projectId: "gan-onneshon",
+      storageBucket: "gan-onneshon.appspot.com",
+      messagingSenderId: "955464357596",
+      appId: "1:955464357596:web:fdc618ba181d86dbae4619"
+    };
+
+    // --- Initialize Firebase Services ---
+    let app, firestoreDb, rtdb, storage;
+    try {
+      app = initializeApp(firebaseConfig);
+      firestoreDb = getFirestore(app); // For notices, etc.
+      rtdb = getDatabase(app); // For the admission form
+      storage = getStorage(app); // For file uploads
+      console.log('Firebase services initialized successfully.');
+    } catch(e) {
+      console.error('Firebase initialization failed:', e);
+    }
+    
+    // --- UI Helper Functions (from main website) ---
+    const UI = {
+      yearEl: document.getElementById('year'),
+      btnTop: document.getElementById('btnTop'),
+      setup() {
+        this.yearEl.textContent = new Date().getFullYear();
+        window.addEventListener('scroll', () => {
+          this.btnTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+        this.btnTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      }
+    };
+
+    // --- Submenu Functionality (FIX) (from main website) ---
+    function handleSubmenus() {
+        const submenuToggles = document.querySelectorAll('.dropdown-menu .dropdown-toggle');
+        submenuToggles.forEach(toggle => {
+            toggle.addEventListener('click', e => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const submenu = toggle.nextElementSibling;
+                const parentLi = toggle.closest('.dropdown-submenu');
+                
+                // Close other open submenus at the same level
+                const parentMenu = toggle.closest('.dropdown-menu');
+                parentMenu.querySelectorAll('.dropdown-submenu.show').forEach(openSubmenu => {
+                    if (openSubmenu !== parentLi) {
+                        openSubmenu.classList.remove('show');
+                    }
+                });
+
+                if (parentLi) {
+                    parentLi.classList.toggle('show');
+                }
+            });
+        });
+
+        // Close all submenus when a main dropdown is closed
+        const mainDropdowns = document.querySelectorAll('.nav-item.dropdown');
+        mainDropdowns.forEach(dropdown => {
+            dropdown.addEventListener('hidden.bs.dropdown', () => {
+                document.querySelectorAll('.dropdown-submenu.show').forEach(submenu => {
+                    submenu.classList.remove('show');
+                });
+            });
+        });
+    }
+
+    // --- Admission Form Specific Logic (from original admission.html) ---
+    const admissionForm = document.getElementById('admissionForm');
+    const formMessage = document.getElementById('formMessage');
+    const submitSpinner = document.getElementById('submitSpinner');
+    
+    // File Upload Function
+    async function uploadFile(file, path) {
+        if (!file) return null;
+        // Use a more unique path to avoid conflicts
+        const fileExtension = file.name.split('.').pop();
+        const fileName = `${path}/${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${fileExtension}`;
+        const fileRef = storageRef(storage, fileName);
+        await uploadBytes(fileRef, file);
+        return getDownloadURL(fileRef);
+    }
+
+    // Form Submission Logic
+    admissionForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      submitSpinner.style.display = 'inline-block';
+      formMessage.style.display = 'none';
+
+      try {
+        if (!rtdb) throw new Error("Database not ready.");
+        if (!storage) throw new Error("Storage not ready.");
+        
+        const studentPhotoFile = document.getElementById('studentPhoto').files[0];
+        const birthCertificateFile = document.getElementById('birthCertificateFile').files[0];
+
+        const photoUrl = await uploadFile(studentPhotoFile, 'student_photos');
+        const birthCertificateUrl = await uploadFile(birthCertificateFile, 'birth_certificates');
+
+        const formData = {
+          name: document.getElementById('studentName').value,
+          dob: document.getElementById('birthDate').value,
+          class: document.getElementById('className').value,
+          fatherName: document.getElementById('fatherName').value,
+          motherName: document.getElementById('motherName').value,
+          address: document.getElementById('address').value,
+          guardianContact: document.getElementById('guardianContact').value,
+          birthCertificateNumber: document.getElementById('birthCertificateNumber').value,
+          photoUrl: photoUrl,
+          birthCertificateUrl: birthCertificateUrl,
+          timestamp: new Date().toISOString()
+        };
+
+        const requestsRef = ref(rtdb, 'admission_requests');
+        await push(requestsRef, formData);
+
+        formMessage.textContent = 'ভর্তির অনুরোধ সফলভাবে জমা দেওয়া হয়েছে।';
+        formMessage.className = 'alert alert-success alert-message';
+        formMessage.style.display = 'block';
+        admissionForm.reset();
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        formMessage.textContent = 'তথ্য জমা দিতে ব্যর্থ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
+        formMessage.className = 'alert alert-danger alert-message';
+        formMessage.style.display = 'block';
+      } finally {
+        submitSpinner.style.display = 'none';
+      }
+    });
+
+    // --- App Initialization on DOM Ready ---
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.setup();
+      handleSubmenus();
+    });
+  </script>
+</body>
+</html>

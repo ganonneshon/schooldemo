@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Admission – জ্ঞান অন্বেষণ প্রি-ক্যাডেট স্কুল এন্ড হাইস্কুল</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <style>
+    /* --- Reusing styles from homepage for consistency --- */
+    :root{
+      --brand-primary: #0b6efd;
+      --brand-accent: #0aa27a;
+      --brand-dark: #0f172a;
+      --brand-muted: #64748b;
+      --brand-light: #f8fafc;
+      --brand-card: #ffffff;
+      --shadow-soft: 0 10px 20px rgba(2,8,23,.08);
+      --radius-large: 20px;
+      --radius-medium: 16px;
+    }
+    html, body {
+      font-family: "Noto Sans Bengali", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background-color: var(--brand-light);
+      color: var(--brand-dark);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+        flex: 1;
+    }
+    .topbar { background: linear-gradient(90deg, #0b6efd 0%, #07c 40%, #0aa27a 100%); color: #fff; font-size: .9rem; }
+    .brandbar { background: #e9f2ff; }
+    .brand-logo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: var(--shadow-soft); }
+    .brand-title { font-weight: 800; color: var(--brand-primary); }
+    .brand-sub { color: var(--brand-muted); }
+    footer { background: #111827; color: #cbd5e1; }
+    footer h6 { color: #fff; }
+    .footer-link { color: #cbd5e1; text-decoration: none; transition: color 0.3s; }
+    .footer-link:hover { color: #fff; }
+    .divider { height: 1px; background: #374151; margin: 1.5rem 0; }
+
+    /* --- Admission Page Specific Styles --- */
+    .form-container {
+        background-color: var(--brand-card);
+        border-radius: var(--radius-large);
+        box-shadow: var(--shadow-soft);
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+    }
+    .form-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .loading-spinner {
+        display: none;
+    }
+    .alert-message {
+        margin-top: 1rem;
+        display: none;
+    }
+    @media (max-width: 767px) {
+        .form-container {
+            padding: 1.5rem;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Contact Bar (Same as Home Page) -->
+  <div class="topbar py-2">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <div class="small"><strong>স্থাপিত:</strong> ১২.১২.২০১৬ইং</div>
+      <div class="small d-none d-lg-block">📍 গ্রামীণ টাওয়ার সংলগ্ন, বানেশ্বার বাজার, গোবিন্দগঞ্জ</div>
+    </div>
+  </div>
+
+  <!-- School Branding Header (Same as Home Page) -->
+  <div class="brandbar border-bottom">
+    <div class="container py-3 d-flex align-items-center gap-3">
+      <img src="https://placehold.co/150x150/0b6efd/white?text=লোগো" alt="School Logo" class="brand-logo" />
+      <div class="flex-grow-1">
+        <h1 class="h3 brand-title mb-1">জ্ঞাণ অন্বেষণ প্রি-ক্যাডেট স্কুল এন্ড হাইস্কুল</h1>
+        <div class="brand-sub">গ্রামীণ টাওয়ার সংলগ্ন, বানেশ্বার বাজার, পানিতলা হাট, গোবিন্দগঞ্জ, গাইবান্ধা</div>
+      </div>
+      <a class="btn btn-outline-primary btn-sm rounded-pill" href="index.html">হোম পেজে ফিরে যান</a>
+    </div>
+  </div>
+
+  <!-- Main Content: Admission Form -->
+  <main class="py-5">
+    <div class="container">
+
+      <!-- Admission Form Section -->
+      <section id="admissionFormSection" class="form-container">
+        <div class="form-header">
+            <i class="bi bi-pencil-square fs-1 text-primary"></i>
+            <h2 class="mt-3 mb-2">ভর্তি ফরম</h2>
+            <p class="text-muted">দয়া করে সমস্ত তথ্য সঠিকভাবে পূরণ করুন।</p>
+        </div>
+
+        <form id="admissionForm">
+          <div class="row g-3">
+            <!-- Student Information -->
+            <div class="col-md-6">
+              <label for="studentName" class="form-label">শিক্ষার্থীর পূর্ণ নাম</label>
+              <input type="text" class="form-control" id="studentName" required>
+            </div>
+            <div class="col-md-6">
+              <label for="birthDate" class="form-label">জন্ম তারিখ</label>
+              <input type="date" class="form-control" id="birthDate" required>
+            </div>
+            <div class="col-md-6">
+              <label for="className" class="form-label">শ্রেণি</label>
+              <select class="form-select" id="className" required>
+                <option selected disabled value="">বাছাই করুন...</option>
+                <option>প্রথম</option>
+                <option>দ্বিতীয়</option>
+                <option>তৃতীয়</option>
+                <option>চতুর্থ</option>
+                <option>পঞ্চম</option>
+                <option>ষষ্ঠ</option>
+                <option>সপ্তম</option>
+                <option>অষ্টম</option>
+                <option>নবম</option>
+                <option>দশম</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="fatherName" class="form-label">পিতার নাম</label>
+              <input type="text" class="form-control" id="fatherName" required>
+            </div>
+            <div class="col-md-6">
+              <label for="motherName" class="form-label">মাতার নাম</label>
+              <input type="text" class="form-control" id="motherName" required>
+            </div>
+            <div class="col-md-6">
+              <label for="address" class="form-label">ঠিকানা</label>
+              <input type="text" class="form-control" id="address" required>
+            </div>
+            <div class="col-md-6">
+              <label for="guardianContact" class="form-label">অভিভাবকের মোবাইল নম্বর</label>
+              <input type="tel" class="form-control" id="guardianContact" required>
+            </div>
+            <div class="col-md-6">
+              <label for="birthCertificateNumber" class="form-label">জন্ম সনদ নম্বর</label>
+              <input type="text" class="form-control" id="birthCertificateNumber" required>
+            </div>
+            <div class="col-md-6">
+                <label for="studentPhoto" class="form-label">শিক্ষার্থীর ছবি</label>
+                <input type="file" class="form-control" id="studentPhoto" accept="image/png, image/jpeg, image/jpg" required>
+            </div>
+            <div class="col-md-6">
+                <label for="birthCertificateFile" class="form-label">জন্ম সনদ এর ছবি</label>
+                <input type="file" class="form-control" id="birthCertificateFile" accept="image/png, image/jpeg, image/jpg" required>
+            </div>
+          </div>
+
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <span id="submitSpinner" class="spinner-border spinner-border-sm loading-spinner me-2" role="status" aria-hidden="true"></span>
+              ভর্তি ফরম জমা দিন
+            </button>
+          </div>
+          <div id="formMessage" class="alert alert-message" role="alert"></div>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer (Same as Home Page) -->
+  <footer class="pt-5 pb-4 mt-auto">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="d-flex flex-wrap justify-content-between align-items-center small text-secondary">
+        <div>© <span id="year"></span>, All Rights Reserved.</div>
+        <div>Developed by Your Name/Company</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- Firebase and Custom App Logic -->
+  <script type="module">
+    // --- Firebase SDK Imports ---
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+    import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+    
+    // --- Firebase Configuration ---
+    const firebaseConfig = {
+      apiKey: "AIzaSyC2uITWHyT5LGxDr38pgJSlTzO3oNBnlg4",
+      authDomain: "gan-onneshon.firebaseapp.com",
+      projectId: "gan-onneshon",
+      storageBucket: "gan-onneshon.firebasestorage.app",
+      messagingSenderId: "955464357596",
+      appId: "1:955464357596:web:fdc618ba181d86dbae4619"
+    };
+
+    // --- Initialize Firebase ---
+    let app, db, storage;
+    try {
+      app = initializeApp(firebaseConfig);
+      db = getDatabase(app);
+      storage = getStorage(app);
+      console.log('Firebase App initialized successfully.');
+    } catch(e) {
+      console.error('Firebase initialization failed:', e);
+    }
+
+    // --- DOM Elements ---
+    const admissionForm = document.getElementById('admissionForm');
+    const formMessage = document.getElementById('formMessage');
+    const submitSpinner = document.getElementById('submitSpinner');
+    
+    // --- File Upload Function ---
+    async function uploadFile(file, path) {
+        if (!file) return null;
+        const fileExtension = file.name.split('.').pop();
+        const fileName = `${path}/${Date.now()}.${fileExtension}`;
+        const fileRef = storageRef(storage, fileName);
+        await uploadBytes(fileRef, file);
+        return getDownloadURL(fileRef);
+    }
+
+    // --- Form Submission Logic ---
+    admissionForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      submitSpinner.style.display = 'inline-block';
+      formMessage.style.display = 'none';
+
+      try {
+        if (!db) throw new Error("Database not ready.");
+        if (!storage) throw new Error("Storage not ready.");
+        
+        // Get the files from the inputs
+        const studentPhotoFile = document.getElementById('studentPhoto').files[0];
+        const birthCertificateFile = document.getElementById('birthCertificateFile').files[0];
+
+        // Upload both files to Firebase Storage
+        const photoUrl = await uploadFile(studentPhotoFile, 'student_photos');
+        const birthCertificateUrl = await uploadFile(birthCertificateFile, 'birth_certificates');
+
+        // Gather all form data
+        const formData = {
+          name: document.getElementById('studentName').value,
+          dob: document.getElementById('birthDate').value,
+          class: document.getElementById('className').value,
+          fatherName: document.getElementById('fatherName').value,
+          motherName: document.getElementById('motherName').value,
+          address: document.getElementById('address').value,
+          guardianContact: document.getElementById('guardianContact').value,
+          birthCertificateNumber: document.getElementById('birthCertificateNumber').value,
+          photoUrl: photoUrl,
+          birthCertificateUrl: birthCertificateUrl,
+          timestamp: new Date().toISOString()
+        };
+
+        // Push the form data to the 'admission_requests' path in the database
+        const requestsRef = ref(db, 'admission_requests');
+        await push(requestsRef, formData);
+
+        formMessage.textContent = 'ভর্তির অনুরোধ সফলভাবে জমা দেওয়া হয়েছে।';
+        formMessage.className = 'alert alert-success alert-message';
+        formMessage.style.display = 'block';
+        admissionForm.reset();
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        formMessage.textContent = 'তথ্য জমা দিতে ব্যর্থ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
+        formMessage.className = 'alert alert-danger alert-message';
+        formMessage.style.display = 'block';
+      } finally {
+        submitSpinner.style.display = 'none';
+      }
+    });
+
+    // --- Page Initialization ---
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>

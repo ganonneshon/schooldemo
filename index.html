@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>জ্ঞান অন্বেষণ প্রি-ক্যাডেট স্কুল এন্ড হাইস্কুল – অফিসিয়াল সাইট</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <style>
+    /* --- Custom Properties for Theming --- */
+    :root {
+        --brand-primary: #0b6efd;
+        --brand-accent: #0aa27a;
+        --brand-dark: #0f172a;
+        --brand-muted: #64748b;
+        --brand-light: #f8fafc;
+        --brand-card: #ffffff;
+        --brand-notice: #133a94;
+        --brand-notice-accent: #ffcc00;
+        --shadow-soft: 0 10px 20px rgba(2, 8, 23, .08);
+        --radius-large: 20px;
+        --radius-medium: 16px;
+        --header-bg: #800080;
+        --button-bg: #ff69b4;
+        --floating-button-bg: #a52a2a;
+    }
+
+    /* --- Base & Typography --- */
+    html, body {
+        font-family: "Noto Sans Bengali", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+        background-color: var(--brand-light);
+        color: var(--brand-dark);
+    }
+    
+    /* --- Header Styling --- */
+    .brandbar {
+        background: var(--brand-notice); /* Notice board color */
+        color: #fff;
+    }
+    
+    .brandbar .school-logo {
+        max-height: 80px; /* লোগোর সর্বোচ্চ উচ্চতা */
+        width: auto;
+        border-radius: 8px; /* লোগোর চারপাশে হালকা গোল বর্ডার */
+    }
+    
+    .school-name {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem; /* মার্জিন কমানো হয়েছে */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .school-name-lg {
+        font-size: 2.8rem;
+    }
+    
+    .school-address {
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 0.3rem; /* মার্জিন কমানো হয়েছে */
+        color: #f0f0f0;
+    }
+
+    /* Adjustments for smaller screens */
+    @media (max-width: 991.98px) {
+        .brandbar .school-logo {
+            max-height: 60px;
+        }
+        .school-name {
+            font-size: 1.8rem;
+            margin-top: 1rem; /* মোবাইল ভিউতে লোগোর নিচে একটু ফাঁকা */
+            margin-bottom: 0.2rem;
+        }
+        .school-address {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+    }
+    
+    /* --- Main Navigation Bar --- */
+    .main-navbar {
+        background: #111827; /* Footer-like black background */
+        font-size: 15px;
+        z-index: 1020; /* Ensure navbar is above other content */
+    }
+    
+    .main-navbar .nav-link {
+        font-weight: 600;
+        padding: .6rem 1.2rem;
+        color: #fff !important;
+        transition: all 0.3s ease;
+    }
+    
+    .main-navbar .nav-link:hover,
+    .main-navbar .nav-link.active {
+        background-color: var(--button-bg); /* Pink background for hover/active */
+        border-radius: 5px;
+        color: #fff !important;
+    }
+
+    .main-navbar .dropdown-menu {
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+        background-color: #111827; /* Dropdown menu background matching navbar */
+    }
+    .main-navbar .dropdown-item {
+        font-weight: 500;
+        padding: .5rem 1rem;
+        color: #fff;
+    }
+    .main-navbar .dropdown-item:hover {
+        background: #374151; /* Lighter shade on hover */
+        color: #fff;
+    }
+    
+    /* --- Submenu Functionality (FIX) --- */
+    .dropdown-menu .dropdown-submenu {
+      position: relative;
+    }
+    .dropdown-menu .dropdown-submenu > .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: -1px;
+      display: none;
+    }
+    .dropdown-menu .dropdown-submenu.show > .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu .dropdown-toggle::after {
+      display: inline-block;
+      margin-left: .255em;
+      vertical-align: .255em;
+      content: "";
+      border-top: .3em solid transparent;
+      border-right: 0;
+      border-bottom: .3em solid transparent;
+      border-left: .3em solid;
+    }
+    @media (max-width: 991.98px) {
+        .dropdown-menu .dropdown-submenu > .dropdown-menu {
+            left: 0;
+            position: static;
+            float: none;
+            width: auto;
+            box-shadow: none;
+            border: none;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .dropdown-menu .dropdown-toggle::after {
+            border-top: .3em solid;
+            border-right: .3em solid transparent;
+            border-bottom: 0;
+            border-left: .3em solid transparent;
+        }
+    }
+    
+    /* --- Notice Ticker --- */
+    .notice-strip {
+      background: var(--brand-notice);
+      color: #fff;
+      position: sticky; /* নোটিশ বোর্ড স্টিকি করা হয়েছে */
+      top: 140px; /* হেডারের উচ্চতার সাথে মিলিয়ে */
+      z-index: 1010; /* হেডারের নিচে কিন্তু অন্য কন্টেন্টের উপরে */
+    }
+    #ticker {
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    #ticker span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker-animation 25s linear infinite;
+    }
+    @keyframes ticker-animation {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    
+    /* --- Hero Carousel --- */
+    .hero {
+        margin-top: 0; /* যেন হেডারের নিচে শুরু হয় */
+    }
+    .hero .carousel-item {
+      height: 450px;
+    }
+    .hero .carousel-item img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    .carousel-caption {
+      backdrop-filter: blur(6px);
+      background: rgba(15, 23, 42, .5);
+      border-radius: 14px;
+    }
+    
+    /* --- General Content & Sections --- */
+    .section {
+      padding: 60px 0;
+    }
+    .card-soft {
+      background: var(--brand-card);
+      border: 0;
+      border-radius: var(--radius-large);
+      box-shadow: var(--shadow-soft);
+    }
+    .card-soft .card-header {
+      background: transparent;
+      border: 0;
+      font-weight: 700;
+    }
+    .icon-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: inline-grid;
+      place-items: center;
+      background: #eef6ff;
+      flex-shrink: 0;
+    }
+    .list-check li {
+      margin: .4rem 0;
+    }
+    
+    /* --- Sidebar Widgets --- */
+    .widget {
+      background: #fff;
+      border-radius: var(--radius-medium);
+      box-shadow: var(--shadow-soft);
+    }
+    .widget .widget-header {
+      padding: .9rem 1.1rem;
+      border-bottom: 1px dashed #e5e7eb;
+      font-weight: 700;
+    }
+    .widget .widget-body {
+      padding: 1rem;
+    }
+    
+    /* --- Footer --- */
+    footer {
+      background: #111827;
+      color: #cbd5e1;
+    }
+    footer h6 {
+      color: #fff;
+      letter-spacing: .5px;
+    }
+    .footer-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-link:hover {
+      color: #fff;
+    }
+    .social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #1f2937;
+      display: inline-grid;
+      place-items: center;
+      color: #e5e7eb;
+      transition: background-color 0.3s;
+    }
+    .social a:hover {
+      background: #374151;
+    }
+    .divider {
+      height: 1px;
+      background: #374151;
+      margin: 1.5rem 0;
+    }
+    
+    /* --- Back to Top Button --- */
+    .back-to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1050;
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--floating-button-bg);
+      border-color: var(--floating-button-bg);
+    }
+    .back-to-top:hover {
+      background-color: #7b2424;
+      border-color: #7b2424;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="brandbar border-bottom sticky-top" style="z-index: 1030;">
+    <div class="container-fluid py-3">
+      <!-- Row updated to use flexbox for centering content -->
+      <div class="row align-items-center justify-content-center">
+        <!-- Logo Column -->
+        <div class="col-lg-2 col-md-3 col-sm-4 text-center mb-3 mb-lg-0">
+          <img src="https://i.ibb.co.com/pvKYPySd/logo.jpg" alt="জ্ঞান অন্বেষণ প্রি-ক্যাডেট স্কুল এন্ড হাইস্কুল লোগো" class="img-fluid school-logo">
+        </div>
+        <!-- School Name & Address Column -->
+        <div class="col-lg-7 col-md-6 col-sm-8 text-center mb-3 mb-lg-0">
+          <h2 class="school-name school-name-lg">জ্ঞান অন্বেষণ প্রি-ক্যাডেট স্কুল এন্ড হাই-স্কুল</h2>
+          <p class="school-address">
+            <i class="bi bi-geo-alt-fill"></i> গ্রামীণ টাওয়ার সংলগ্ন, বানেশ্বার বাজার, গোবিন্দগঞ্জ,গাইবান্ধা </p>
+        </div>
+        <!-- Button & Contact Info Column -->
+        <div class="col-lg-3 col-md-3 col-sm-12 text-center">
+          <!-- Bootstrap's btn-group class is used to remove all spacing between buttons and create a single, professional-looking block -->
+          <div class="btn-group" role="group" aria-label="Contact and Follow Us">
+      
+            <!-- The dropdown is now part of the button group -->
+            <div class="btn-group" role="group">
+              <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-fill"></i> Follow Us
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="https://www.facebook.com/Ganonneshon" target="_blank"><i class="bi bi-facebook me-2"></i> Facebook</a></li>
+                <li><a class="dropdown-item" href="https://www.youtube.com/@Ganonneshon" target="_blank"><i class="bi bi-youtube me-2"></i> YouTube</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark main-navbar sticky-top" style="z-index: 1020;">
+    <div class="container-fluid">
+      <button class="navbar-toggler my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Flexbox and gap classes are added here to center and group the menu items -->
+        <ul class="navbar-nav d-flex justify-content-center flex-wrap mx-auto">
+          <li class="nav-item"><a class="nav-link" href="#">হোম</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="administarationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">প্রশাসন</a>
+            <ul class="dropdown-menu" aria-labelledby="administarationDropdown">
+              <li><a class="dropdown-item" href="#">প্রধান শিক্ষক</a></li>
+              <li><a class="dropdown-item" href="#">ম্যানেজিং কমিটির সদস্য</a></li>
+            </ul>
+          </li>
+
+          <li><a class="dropdown-item" href="#">ইনস্টিটিউট বিবরণ</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="listDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">সকল তালিকা</a>
+            <ul class="dropdown-menu" aria-labelledby="listDropdown">
+              <li><a class="dropdown-item" href="#">শিক্ষার্থী তালিকা</a></li>
+              <li><a class="dropdown-item" href="#">শিক্ষক তালিকা</a></li>
+              <li><a class="dropdown-item" href="#">কর্মচারী তথ্য</a></li>
+            </ul>
+          </li>
+           
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="routineDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">রুটিন সমূহ</a>
+            <ul class="dropdown-menu" aria-labelledby="routineDropdown">
+              <li><a class="dropdown-item" href="#">ক্লাস রুটিন</a></li>
+              <li><a class="dropdown-item" href="#">পরীক্ষার রুটিন</a></li>
+              <li><a class="dropdown-item" href="https://ibb.co.com/nMfQcDqP" target="_blank">সরকারি ছুটির তালিকা</a></li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="instituteInfoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">ইনস্টিটিউট তথ্য</a>
+            <ul class="dropdown-menu" aria-labelledby="instituteInfoDropdown">
+             
+              
+              
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" href="#">একাডেমিক তথ্য</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">বিস্তারিত তথ্য</a></li>
+                  <li><a class="dropdown-item" href="#">পোশাক কোড</a></li>
+                  <li><a class="dropdown-item" href="#">সিট তথ্য</a></li>
+                  <li><a class="dropdown-item" href="#">সিলেবাস তথ্য</a></li>
+                </ul>
+              </li>
+              
+               <li><a class="dropdown-item" href="#">ফি তথ্য</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="galleryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">গ্যালারী</a>
+            <ul class="dropdown-menu" aria-labelledby="galleryDropdown">
+              <li><a class="dropdown-item" href="#">ছবি গ্যালারী</a></li>
+              <li><a class="dropdown-item" href="#">ভিডিও গ্যালারী</a></li>
+            </ul>
+          </li>
+
+            
+            <li><a class="dropdown-item" href="https://nctbbook.com/" target="_blank">সরকারি পাঠ্যবইসমুহ </a></li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">আরো</a>
+            <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+              <li><a class="dropdown-item" href="#">সকল নোটিশ</a></li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" href="#">ডাউনলোড</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">অ্যাসাইনমেন্ট</a></li>
+                  <li><a class="dropdown-item" href="#">রেকর্ডেড ক্লাস</a></li>
+                  <li><a class="dropdown-item" href="#">ডিজিটাল কনটেন্ট</a></li>
+                  <li><a class="dropdown-item" href="#">হ্যান্ড বুক</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav-item"><a class="nav-link" href="#">ভর্তি</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">যোগাযোগ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">শিক্ষক লগইন</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">শিক্ষার্থী লগইন</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">পরিচালক লগইন</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="notice-strip py-2">
+    <div class="container d-flex gap-3 align-items-center">
+      <span class="badge bg-warning text-dark fw-bold flex-shrink-0">নোটিশ</span>
+      <div id="ticker" class="flex-grow-1"><span id="tickerText">লোড হচ্ছে...</span></div>
+    </div>
+  </div>
+
+  <section id="home" class="hero">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators" id="heroIndicators"></div>
+      <div class="carousel-inner" id="heroSlides">
+        <div class="carousel-item active">
+          <img src="https://images.unsplash.com/photo-1523246191915-9f09f6d7c37f?q=80&w=1600&auto=format&fit=crop" class="d-block w-100" alt="Students">
+          <div class="carousel-caption d-none d-md-block p-4">
+            <h5 class="fw-bold">স্বাগতম – জ্ঞান ও নৈতিকতার আলোকবর্তিকা</h5>
+            <p>আমাদের লক্ষ্য—মানসম্মত শিক্ষা, আধুনিকতা ও মানবিকতা।</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="container">
+      <div class="row g-4 g-lg-5">
+        <div class="col-lg-8">
+          <div class="card card-soft mb-4">
+            <div class="card-body p-4">
+              <div class="d-flex gap-3 align-items-start">
+                <div class="icon-badge text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-mortarboard-fill" viewBox="0 0 16 16"><path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0l7.5-3a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/><path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"/></svg></div>
+                <div>
+                  <h3 class="h5 mb-2">প্রতিষ্ঠানের ইতিহাস</h3>
+                  <p class="mb-0 text-secondary">২০১৬ সালে প্রতিষ্ঠিত হওয়ার পর থেকে আমরা শিশুদের মানসম্মত শিক্ষা, নৈতিকতা ও শৃঙ্খলার মাধ্যমে সঠিক মানুষ হিসেবে গড়ে তুলতে কাজ করে যাচ্ছি। আমাদের লক্ষ্য শুধু পরীক্ষায় ভালো ফল নয়, বরং প্রতিটি শিক্ষার্থীর ভেতর দেশপ্রেম, মূল্যবোধ ও দায়িত্বশীলতা গড়ে তোলা।</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card card-soft h-100">
+                <div class="card-header px-4 pt-4"><span class="text-primary">অভিভাবকের বাণী</span></div>
+                <div class="card-body p-4">
+                  <div class="d-flex gap-3">
+                    <img class="rounded-4" src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?q=80&w=500&auto=format&fit=crop" width="84" height="84" style="object-fit:cover" alt="Chairman"/>
+                    <div><p class="mb-0 text-secondary">নিষ্ঠা, সততা ও দেশপ্রেম—এই তিনকে ধারণ করে আমাদের শিক্ষা কার্যক্রম পরিচালিত হয়।</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card card-soft h-100">
+                <div class="card-header px-4 pt-4"><span class="text-success">প্রধান শিক্ষকের বাণী</span></div>
+                <div class="card-body p-4">
+                  <div class="d-flex gap-3">
+                    <img class="rounded-4" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=500&auto=format&fit=crop" width="84" height="84" style="object-fit:cover" alt="Principal"/>
+                    <div><p class="mb-0 text-secondary">শিক্ষার্থীদের সার্বিক বিকাশে আমরা সমান গুরুত্ব দিই—পড়াশোনা, খেলাধুলা, নৈতিকতা ও নেতৃত্বগুণ।</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="widget mb-4" id="noticeWidget">
+            <div class="widget-header">নোটিশ বোর্ড</div>
+            <div class="widget-body"><ul class="list-group list-group-flush" id="noticeList"><li class="list-group-item">লোড হচ্ছে...</li></ul></div>
+          </div>
+          <div class="widget">
+            <div class="widget-header">গুরুত্বপূর্ণ লিঙ্ক</div>
+            <div class="widget-body" id="linksArea"><a class="d-block footer-link mb-2" target="_blank" href="#">লোড হচ্ছে...</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="pt-5 pb-4 mt-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h6 class="mb-3">আমাদের সম্পর্কে</h6>
+          <p class="text-secondary small">২০১৬ সালে প্রতিষ্ঠিত, জ্ঞান অন্বেষণ প্রি-ক্যাডেট স্কুল এন্ড হাইস্কুল গাইবান্ধা জেলার গোবিন্দগঞ্জ উপজেলার একটি স্বনামধন্য শিক্ষা প্রতিষ্ঠান। এখানে প্লে-গ্রুপ থেকে নবম শ্রেণি পর্যন্ত শিক্ষার্থীদের আধুনিক ও মানসম্মত শিক্ষা প্রদান করা হয়।</p>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+          <h6 class="mb-3">দরকারী লিঙ্ক</h6>
+          <ul class="list-unstyled">
+            <li><a class="footer-link small d-block mb-2" href="#">ফলাফল</a></li>
+            <li><a class="footer-link small d-block mb-2" href="#">ডাউনলোড</a></li>
+            <li><a class="footer-link small d-block mb-2" href="#">নোটিশ</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <h6 class="mb-3">সাম্প্রতিক খবর</h6>
+          <ul class="list-unstyled" id="recentNews"><li class="text-secondary small">লোড হচ্ছে...</li></ul>
+        </div>
+        <div class="col-lg-3" id="contact">
+          <h6 class="mb-3">যোগাযোগ</h6>
+          <ul class="list-unstyled text-secondary small mb-3">
+            <li class="d-flex gap-2 mb-2"><i class="bi bi-geo-alt-fill text-primary mt-1"></i><span>গ্রামীণ টাওয়ার সংলগ্ন, বানেশ্বার বাজার, গোবিন্দগঞ্জ</span></li>
+            <li class="d-flex gap-2 mb-2"><i class="bi bi-telephone-fill text-primary mt-1"></i><span>01303-703561, 01751-246763</span></li>
+            <li class="d-flex gap-2 mb-2"><i class="bi bi-envelope-fill text-primary mt-1"></i><span>info.genonneshon@gmail.com</span></li>
+          </ul>
+          <div class="d-flex align-items-center gap-2 social mb-3">
+            <a href="https://www.facebook.com/profile.php?id=61578225627566" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://youtube.com/channel/UCSbXN13j7xstENZnTb4g5ZA?si=zJJJ-K9BM9FsdhGl" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="d-flex flex-wrap justify-content-between align-items-center small text-secondary">
+        <div>© <span id="year"></span>, All Rights Reserved.</div>
+        <div class="d-flex align-items-center">
+            Developed and Maintained by <a href="#" class="footer-link ms-1">ARMS info Tech BD</a>
+            <!-- Developer's Social Links - Add your links here -->
+            <div class="social-links d-flex gap-2 ms-3">
+              <!-- আপনার ওয়েবসাইট বা পোর্টফোলিওর লিঙ্ক এখানে যোগ করুন -->
+              <a href="#" target="_blank" class="footer-link" aria-label="Website"><i class="bi bi-link" style="font-size: 1.25rem;"></i></a>
+              <!-- আপনার ফেসবুক প্রোফাইল বা পেজের লিঙ্ক এখানে যোগ করুন -->
+              <a href="https://www.facebook.com/mehedi.birat/" target="_blank" class="footer-link" aria-label="Facebook"><i class="bi bi-facebook" style="font-size: 1.25rem;"></i></a>
+              <!-- আপনার হোয়াটসঅ্যাপ নম্বরের লিঙ্ক এখানে যোগ করুন। '88017XXXXXXXX' এর জায়গায় আপনার নম্বরটি দিন। -->
+              <a href="https://wa.me/8801727393466" target="_blank" class="footer-link" aria-label="WhatsApp"><i class="bi bi-whatsapp" style="font-size: 1.25rem;"></i></a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="btnTop" class="btn btn-primary back-to-top"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN6jIeHz9T" crossorigin="anonymous"></script>
+  
+  <script type="module">
+    // --- Firebase SDK Imports ---
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    
+    // --- Firebase Configuration ---
+    // IMPORTANT: Replace with your actual Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyC2uITWHyT5LGxDr38pgJSlTzO3oNBnlg4",
+      authDomain: "gan-onneshon.firebaseapp.com",
+      projectId: "gan-onneshon",
+      storageBucket: "gan-onneshon.appspot.com",
+      messagingSenderId: "955464357596",
+      appId: "1:955464357596:web:fdc618ba181d86dbae4619"
+    };
+
+    // --- Initialize Firebase ---
+    let app, db;
+    try {
+      app = initializeApp(firebaseConfig);
+      db = getFirestore(app);
+    } catch(e) {
+      console.warn('Firebase not initialized. Using demo data.', e);
+    }
+
+    // --- UI Helper Functions ---
+    const UI = {
+      yearEl: document.getElementById('year'),
+      btnTop: document.getElementById('btnTop'),
+      setup() {
+        this.yearEl.textContent = new Date().getFullYear();
+        window.addEventListener('scroll', () => {
+          this.btnTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+        this.btnTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      }
+    };
+
+    // --- Submenu Functionality (FIX) ---
+    function handleSubmenus() {
+        const submenuToggles = document.querySelectorAll('.dropdown-menu .dropdown-toggle');
+        submenuToggles.forEach(toggle => {
+            toggle.addEventListener('click', e => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const submenu = toggle.nextElementSibling;
+                const parentLi = toggle.closest('.dropdown-submenu');
+                
+                // Close other open submenus at the same level
+                const parentMenu = toggle.closest('.dropdown-menu');
+                parentMenu.querySelectorAll('.dropdown-submenu.show').forEach(openSubmenu => {
+                    if (openSubmenu !== parentLi) {
+                        openSubmenu.classList.remove('show');
+                    }
+                });
+
+                if (parentLi) {
+                    parentLi.classList.toggle('show');
+                }
+            });
+        });
+
+        // Close all submenus when a main dropdown is closed
+        const mainDropdowns = document.querySelectorAll('.nav-item.dropdown');
+        mainDropdowns.forEach(dropdown => {
+            dropdown.addEventListener('hidden.bs.dropdown', () => {
+                document.querySelectorAll('.dropdown-submenu.show').forEach(submenu => {
+                    submenu.classList.remove('show');
+                });
+            });
+        });
+    }
+
+    // --- Data Loading from Firestore ---
+    const DataLoader = {
+      async loadNotices() {
+        const list = document.getElementById('noticeList');
+        const tickerText = document.getElementById('tickerText');
+        const demo = [
+          { title: 'এসএসসি পরীক্ষার্থীদের রুটিন প্রকাশিত', date: '2025-01-10' },
+          { title: 'ভর্তি ফরম বিতরণ শুরু হয়েছে', date: '2025-01-05' }
+        ];
+        try {
+          if (!db) throw new Error('DB not ready');
+          const q = query(collection(db, 'notices'), orderBy('date', 'desc'), limit(5));
+          const snap = await getDocs(q);
+          const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          this.renderNotices(data.length ? data : demo, list, tickerText);
+        } catch (e) {
+          this.renderNotices(demo, list, tickerText);
+        }
+      },
+      renderNotices(data, list, ticker) {
+        ticker.textContent = data.map(n => n.title).join(' • ');
+        list.innerHTML = data.map(n => `
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+            <a href="#" class="text-decoration-none text-dark">${n.title}</a>
+            <span class="small text-muted flex-shrink-0 ms-3">${new Date(n.date).toLocaleDateString('bn-BD')}</span>
+          </li>`).join('');
+      },
+
+      async loadSlides() {
+        const slides = document.getElementById('heroSlides');
+        const indicators = document.getElementById('heroIndicators');
+        const demo = [
+          { img: 'https://images.unsplash.com/photo-1523246191915-9f09f6d7c37f?q=80&w=1600&auto=format&fit=crop', title: 'স্বাগতম – জ্ঞান ও নৈতিকতার আলোকবর্তিকা', desc: 'আমাদের লক্ষ্য—মানসম্মত শিক্ষা, আধুনিকতা ও মানবিকতা।' },
+          { img: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600&auto=format&fit=crop', title: 'টেক-স্মার্ট ক্লাসরুম', desc: 'স্মার্ট বোর্ড, প্রোজেক্টর ও ই-লার্নিং সুবিধা।' }
+        ];
+        try {
+          if (!db) throw new Error('DB not ready');
+          const q = query(collection(db, 'slides'), orderBy('order', 'asc'));
+          const snap = await getDocs(q);
+          const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          this.renderSlides(data.length ? data : demo, slides, indicators);
+        } catch (e) {
+          this.renderSlides(demo, slides, indicators);
+        }
+      },
+      renderSlides(data, slidesEl, indicatorsEl) {
+        slidesEl.innerHTML = '';
+        indicatorsEl.innerHTML = '';
+        data.forEach((s, idx) => {
+          slidesEl.innerHTML += `
+            <div class="carousel-item ${idx === 0 ? 'active' : ''}">
+              <img src="${s.img}" class="d-block w-100" alt="Slide Image">
+              <div class="carousel-caption d-none d-md-block p-4">
+                <h5 class="fw-bold">${s.title || ''}</h5>
+                <p>${s.desc || ''}</p>
+              </div>
+            </div>`;
+          indicatorsEl.innerHTML += `<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="${idx}" class="${idx === 0 ? 'active' : ''}" aria-current="true" aria-label="Slide ${idx + 1}"></button>`;
+        });
+      }
+    };
+
+    // --- App Initialization on DOM Ready ---
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.setup();
+      handleSubmenus();
+      DataLoader.loadNotices();
+      DataLoader.loadSlides();
+      // You can add other data loaders (news, links) here
+    });
+  </script>
+</body>
+</html>
